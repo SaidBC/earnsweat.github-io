@@ -10,6 +10,7 @@
             font-family:cooper;
             overflow-x: hidden;
             background-color: #09041c;
+            scroll-behavior: smooth;
         }
         main{
             max-width: 100vw;
