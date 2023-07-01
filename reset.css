@@ -72,6 +72,7 @@
             padding-left: 50px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             color: #444;
+            animation: toRight 1s ease-in-out 1;
         }
         h1{
             position: absolute;
