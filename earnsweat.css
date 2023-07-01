@@ -239,11 +239,3 @@
             display: inline;
             margin: 0 1.2vw;
         }
-        @keyframes  toRight{
-            from{opacity: 0;margin-left: -200px;}
-            to{opacity: 1;margin-left: 0;}
-        }
-        @keyframes toTop {
-            from{opacity: 0;margin-top: -200px;}
-            to{opacity: 1;margin-top: 0;}
-        }
