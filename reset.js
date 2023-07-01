@@ -12,7 +12,7 @@
     </div>`
            home.after(newDiv)
            }else{
-            newP.innerHTML = "!! This Email Have not registered before !!"
+            newP.innerHTML = "!! This Email Have not registered Yet !!"
             newP.style.color = "#f56"
             document.querySelector("label").before(newP)
            }
