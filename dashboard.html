@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="icon" href="https://i.ibb.co/rcjbC8C/RZ2PEBL.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+                      *{
+            padding: 0;
+            margin: 0;
+        }
+        ::selection{
+            color: white;
+            background-color: rgba(252,80,113,1);
+        }
+        body{
+            font-family:cooper;
+            overflow-x: hidden;
+            background-color: #09041c;
+        }
+        main{
+            max-width: 100vw;
+        }
+        header{
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color:rgba(0,0,0,0.4);
+            z-index: 2;
+            animation: toTop 1S ease-in-out 1;
+        }
+        header .profile{
+            width: 60px;
+            top: -0;
+            left: 0;
+        }
+        header .profile-list{
+            position: relative;
+            left: 50px;
+            top: -50px;
+            cursor: pointer;
+        }
+        .profile-list:hover i{
+            bottom: -72.5px;
+        }
+        .profile-list:hover span{
+            bottom: -75px;
+        }
+        nav{
+            position: absolute;
+            right: 12vw;
+            top: 25px;
+        }
+        .profile-list span{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 0 0 8px 8px;
+            background-color: #e7e7e7;
+            bottom: -70px;
+            left: 15px;
+            transition: bottom .2s cubic-bezier(.4,0,.2,1);
+
+         }
+         .profile-list>i{
+            position: relative;
+            bottom: -69px;
+            left: 27px;
+            font-size: 20px;
+            color: #565656;
+            transition: bottom .2s cubic-bezier(.4,0,.2,1);
+
+         }
+        nav .nav-list{
+            position: absolute;
+    display: block;
+    width: 150px;
+    height: 190px;
+    background-color: white;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    border-radius: 0 0 10px 10px;
+    top: 72px;
+    left: -35px;
+    border-top: none !important;
+    border: 2px solid #444;
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform .35s cubic-bezier(.4,0,.2,1)
+        }
+        #xmark{
+            width: 100%;
+    background: red;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 1px;
+    border-radius: 0 0 8px 8px;
+    padding: 2px 0;
+}
+        nav ul a{
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            list-style: none;
+            transition: color .2s ease;
+            box-sizing: border-box;
+            padding: 0 0;
+        }
+        nav ul a:hover{
+            color: rgba(0, 0, 0, 0.8);
+        }
+        nav ul a li{
+            display: block;
+            margin: 15px 20px;
+        }
+        nav .notification{
+            color:white;
+        }
+        .active{
+            transform: scaleY(1) !important;
+        }
+        #home{
+            position: relative;
+            width: 100%;
+            height: 200vh;
+            background: linear-gradient(300deg, rgba(252,80,113,1) 0%, rgba(213,95,119,1) 12%, rgba(192,103,122,1) 21%, rgba(145,57,166,1) 94%);
+        }
+        .logo{
+            position: absolute;
+            top: 15px;
+            left: 2vw;
+            border-radius: 50%;
+            width: 50px;
+        }
+        #side{
+            position: fixed;
+            left: 40px;
+            top: 100px;
+            width: 80px;
+            height: 500px;
+            padding: 15px 10px 0 10px ;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: -5px 4px #c8c8c8;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #444;
+            font-size: 12px;
+            transition: width .2s cubic-bezier(.4,0,.2,1),padding .2s cubic-bezier(.4,0,.2,1);
+            animation: toRight 1s ease-in-out 1;
+            z-index: 1;
+        }
+        i{
+            font-size: 33px;
+        }
+        .dashboard{
+            width: 100%;
+            height: 70px;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            gap: 12px;
+            border-radius: 15px;
+            padding: 10px 0 5px 0;
+            transition: background .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),font-size .2s cubic-bezier(.4,0,.2,1);
+            user-select: none;
+            cursor: pointer;
+        }
+        .dashboard:hover,.active{
+            background: rgba(252,80,113,1);
+        }
+        .dashboard:hover,.active{
+            color: white;
+        }
+        #details{
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            width: 80vw;
+            height: 400px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: -7px 6px #c8c8c8;
+            transition: all .2s cubic-bezier(.4,0,.2,1);
+            animation: toTop 1S ease-in-out 1;
+        }
+
+        #info{
+    width: 50%;
+    height: 100%;
+    padding-left: 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+        }
+        #info h1{
+            display: inline-block;
+            font-family: Algerian;
+            font-weight: 200;
+            margin: -275px 0 0 -27.5px;
+        }
+        #info span{
+         font-size: 18px;
+         color:white;
+        }
+         .profile{
+            position: absolute;
+            width: 125px;
+            display: block;
+            top: -75px;
+            border-radius: 50%;
+            border: 5px solid white;
+            left: calc(50% - 75px);
+        }
+        #info p{
+            font-family:fantasy
+        }
+        #info p i{
+            position: absolute;
+            right: 50px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 25px;
+            transition: color .2s cubic-bezier(.4,0,.2,1);
+        }
+        #info p i:hover{
+            color:white;
+        }
+        #wallet{
+            width: 50%;
+            height: 25px;
+    padding: 0 5px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+        }
+        #wallet:disabled{
+            background:rgba(255, 255, 255, 0.75)
+        }
+        .userInfo{
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: rgba(42, 42, 42,0.5);
+            width: 40%;
+            height: 70%;
+            border-radius: 10px;
+            background: #FF8F8D;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            top: 93px;
+           left: 45px;    
+           padding-left: 40px;
+           gap: 12.5px;  
+           box-shadow: -4px 3px #ce706f;     
+        }
+        footer{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            background-color: #000;
+            color: white;
+            align-items: center;
+            border-top: white 1px solid;
+        }
+        #balance{
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: white;
+            width: 40%;
+            height: 70%;
+            border-radius: 10px;
+            background: linear-gradient(137deg, rgba(250,164,67,1) 0%, rgba(252,176,69,1) 67%, rgba(252,238,69,1) 99%);
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            top: 93px;
+           right: 45px;    
+           padding-left: 40px;
+           gap: 15.5px; 
+           box-shadow: -4px 3px rgb(205 143 53);      
+        }
+        #balance h1{
+            position: absolute;
+            top: 30px;
+            left: calc(50% - 150px);
+            font-family: monospace;
+             text-shadow:1px 1px #fcaf45, 2px 2px 3px rgba(0,0,0,0.7);
+        }
+        #balance h3{
+          margin-left: 100px;
+          text-shadow:1px 1px #fcaf45, 2px 2px 3px rgba(0,0,0,0.7);
+
+        }
+        .coin{
+
+            margin: -2px;
+    position: absolute;
+    top: var(--t);
+    right: 20%;
+    transform: scale(0.55);
+            
+        }
+
+        .coin img{
+            position: absolute;
+            width: var(--w);
+            left: var(--l);
+            top: var(--t);
+            border-radius: 50%;
+        }
+        #balance p{
+         display: flex;
+         justify-content: space-between;
+        }
+        #balance p span{
+            margin-right: 20%;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* PROFILE END */
+        /* GRAPH START */
+        #graph{
+            position: absolute;
+            left: 200px;
+            top: 750px;
+            width: 80vw;
+            height: 400px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background-color: white;
+            box-shadow: -7px 6px #c8c8c8;
+            transition: all .2s cubic-bezier(.4,0,.2,1);
+            animation: toBottom 1s ease-in-out 1;
+        }
+        .title{
+            width: 100%;
+            height: 200px;
+            background-color: #8006a5;
+            position: absolute;
+            top: -200px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: -7px 6px #54046d;
+        }
+        .title::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            bottom: -6px;
+            background-color: white;
+        }
+        .title h1{
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            text-shadow:1px 1px #8006a5, 2px 2px 3px rgba(0,0,0,0.7);
+        }
+        .key{
+            position: relative;
+            margin: 45px 0 0px 40px;
+        }
+        .key div{
+         position: absolute;
+         width: 50px;
+         height: 50px;
+         top: -10px;
+         border: 2px solid #964549;
+         border-radius: 6px;
+         background-color: #ff7472;
+         transition: transform 1s ease-out, color .3s cubic-bezier(.4,0,.2,1);
+        }
+        .key p{
+            margin-left: 60px;
+            font-size: 25px;
+            color: white;
+            text-shadow:1px 1px #8006a5, 2px 2px 3px rgba(0,0,0,0.7);
+        }
+        .sweats{
+            position: absolute;
+            list-style: none;
+            left: 10%;
+            top: -1%;
+        }
+        .sweats li{
+            margin-top: 15.5px;
+        }
+
+        .draw{
+         position: absolute;
+         width: 50vw;
+         height: 80%;
+         bottom: 15%;
+         left: 12%;
+         display: flex;
+         justify-content: center;
+         gap: 5%;
+        }
+        .draw::before{
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 5px;
+            background-color: #444;
+            left: 20px;
+            top: 0;
+            border-top-left-radius:5px ;
+            border-top-right-radius:5px ;
+
+        }
+        .draw::after{
+            content: '';
+            position: absolute;
+            height: 5px;
+            width: 100%;
+            background-color: #444;
+            left: 20px;
+            bottom: 0;
+            border-bottom-right-radius:5px ;
+            border-top-right-radius:5px ;
+        }
+        .draw div{
+         position: absolute;
+         width: 50px;
+         height: 90%;
+         margin-top:3.5% ;
+         border: 2px solid #964549;
+         border-bottom:0;
+         border-top-left-radius: 6px;
+         border-top-right-radius: 6px;
+         background-color: #ff7472;
+         bottom: 0;
+         transform: scaleY(0);
+         transform-origin: bottom;
+         transition: transform 1s ease-out, color .3s cubic-bezier(.4,0,.2,1);
+        }
+        .draw div:hover,.key div:hover{
+            background-color: #ed3d3a;
+        }
+        .days{
+            position: absolute;
+            list-style: none;
+            left: 0.5vw;
+            bottom: -13%;
+            width: 100%;
+        }
+        .days li{
+            display: inline;
+            margin-left:8%;
+        }
+
+        /* GRAPH END */
+        footer p{
+            margin: 0 0 0 50px;
+        }
+        footer ul{
+            margin: 0 0 0 400px;
+        }
+        footer ul a{
+            color: rgba(255, 255, 255, 1);
+            text-decoration: none;
+            font-size: 22px;
+            list-style: none;
+            transition: color .2s ease;
+            box-sizing: border-box;
+            padding: 0 5px;
+
+        }
+        footer ul a:hover{
+            color: rgba(255, 255, 255, 0.8);
+        }
+        footer ul a li{
+            display: inline;
+            margin: 0 1.2vw;
+        }
+        @keyframes  toRight{
+            from{opacity: 0;margin-left: -200px;}
+            to{opacity: 1;margin-left: 0;}
+        }
+        @keyframes toTop {
+            from{opacity: 0;margin-top: -200px;}
+            to{opacity: 1;margin-top: 0;}
+        }
+        @keyframes toBottom {
+            from{opacity: 0;margin-top: 200px;}
+            to{opacity: 1;margin-top: 0;}
+        }
+
+    
+    </style>
+    <title>Document</title>
+    <style>
+</style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="logo">
+        <nav>
+            <div>
+                <i class="fa-solid fa-bell notification"></i>
+                <div class="profile-list">
+                    <span id="arrowBox"></span>
+                    <img class="profile" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                    <div class="nav-list">
+                        <ul>
+                            <a href="#">
+                                <li>PROFILE</li>
+                            </a>
+                            <a href="#">
+                                <li>AFILLIATES</li>
+                            </a>
+                            <a href="#">
+                                <li>HELP</li>
+                            </a>
+                            <a href="#">
+                                <li>LOG OUT</li>
+                            </a>
+                        </ul>
+                        <div onclick="hiding()" id="xmark">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    </div>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="home">
+        <div id="side">
+            <div class="dashboard active"><i class="fa-solid fa-house"></i><p>OVERVIEW</p></div>
+            <div class="dashboard"><i class="fa-solid fa-coins"></i><p>EARN</p></div>
+            <div class="dashboard"><i class="fa-solid fa-clock-rotate-left"></i><p>HISTORY</p></div>
+            <div class="dashboard"><i class="fa-solid fa-paper-plane"></i><p>WITHDRAW</p></div>
+            <div class="dashboard"><i class="fa-solid fa-sliders"></i><p>SETTINGS</p></div>
+        </div>
+        <section id="details">
+            <div id="info"></h1>
+                 <h1>WELCOME BACK</h1> 
+                <div class="userInfo">
+                    <img class="profile" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                    <p>Username : <span>User #1</span><i class="fa-regular fa-pen-to-square"></i> </p>
+                    <p>Date : <span>2000/01/01</span><i class="fa-regular fa-pen-to-square"></i> </p>
+                    <p>Wallet : <input type="text" value="8328bdf4a7c2f3bacdaa9643ca2a0d4011609994ccc75bfb4b449b4fa97ec952" disabled name="wallet" id="wallet"></span><i class="fa-regular fa-pen-to-square"></i> </p>
+                    <p>Email : <span>razzouksaid139@gmail.com</span><i class="fa-regular fa-pen-to-square"></i> </p>
+                </div>
+            </div>
+            <div id="balance">
+              <h1>YOUR SWEAT BALANCE</h1>
+              <h3><span>1000</span> SWEAT</h3>
+              <div style="--t:40px;transform: scale(0.75);left: 65%;" class="coin">
+                <img style="--w: 20px;--t: 81px;--l: 21px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w:40px;--t:50px;--l:20px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w: 30px;--t: 71px;--l: 40px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+              </div>
+              <p>Today's Earning : <span>200</span></p>
+              <div style="--t:100px;" class="coin">
+                <img style="--w: 20px;--t: 81px;--l: 21px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w:40px;--t:50px;--l:20px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w: 30px;--t: 71px;--l: 40px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+              </div>
+              <p>This Mounth Earning : <span>800</span></p>
+              <div style="--t:135px;" class="coin">
+                <img style="--w: 20px;--t: 81px;--l: 21px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w:40px;--t:50px;--l:20px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+                <img style="--w: 30px;--t: 71px;--l: 40px;" src="https://s2.coinmarketcap.com/static/img/coins/64x64/21351.png" alt="">
+              </div>
+            </div>
+        </section>
+        <section id="graph">
+            <div class="container">
+                <ul class="sweats">
+                    <li>550</li>
+                    <li>500</li>
+                    <li>450</li>
+                    <li>400</li>
+                    <li>350</li>
+                    <li>300</li>
+                    <li>250</li>
+                    <li>100</li>
+                    <li>50</li>
+                    <li>0</li>
+                </ul>
+                <div class="draw">
+                    <div style="height: 100%;left: 8%;"></div>
+                    <div style="height: 15%;left: 21%;"></div>
+                    <div style="height: 40%;left: 34%;"></div>
+                    <div style="height: 42%;left: 47%;"></div>
+                    <div style="height: 60%;left: 60%;"></div>
+                    <div style="height: 20%;left: 73%;"></div>
+                    <div style="height: 70%;left: 86%;"></div>
+                    <ul class="days">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tur</li>
+                        <li>Wes</li>
+                        <li>Tus</li>
+                        <li>Fri</li>
+                        <li>Sut</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="title">
+              <h1>YOUR SWEAT EARNING ON THE LAST WEEK</h1>
+              <div class="key">
+               <div></div> 
+               <p>SWEAT</p>
+              </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 SweatEarn, Inc. All rights reserved.</p>
+        <ul>
+            <a href="#"><li>Contact</li></a>
+            <a href="#"><li>Terms & Conditions</li></a>
+            <a href="#"><li>Privacy Policy</li></a>
+        </ul>
+    </footer>
+    <script>
+
+        var dashboard = document.querySelectorAll(".dashboard"),
+        side = document.getElementById("side"),
+        details = document.querySelector("#details"),
+        graph = document.getElementById("graph"),
+        navList = document.getElementsByClassName("nav-list"),
+        xmark = document.getElementById("xmark"),
+        icon = document.getElementsByClassName("fa-angles-down"),
+        profileList = document.getElementsByClassName("profile-list"),
+        profileListSpan = document.getElementById("arrowBox");
+
+        profileList[0].addEventListener("click",(e)=>{
+            navList[0].classList.add("active");
+            
+        })
+        function hiding(e){
+            navList[0].classList.remove("active");
+
+        }
+
+            side.addEventListener("mousemove",()=>{
+                document.getElementById("side").style.width="250px";
+                document.getElementById("side").style.padding="15px 20px 0 20px";
+                dashboard.forEach((x)=>{x.style.flexFlow = "row nowrap";x.style.fontSize="22px";x.style.gap="40px";x.style.padding = "10px 0 5px 20px"})
+                details.style.width = "calc(80vw - 150px)"
+                details.style.left = "350px"
+                graph.style.width = "calc(80vw - 150px)"
+                graph.style.left = "350px"
+
+             })
+            side.addEventListener("mouseleave",()=>{
+                document.getElementById("side").style.width="100px";
+                document.getElementById("side").style.padding="15px 10px 0 10px";
+                dashboard.forEach((x)=>{x.style.flexFlow = "column nowrap";x.style.fontSize="12px";x.style.gap="12px";x.style.padding = "10px 0 5px 0"})
+                details.style.width = "80vw"
+                details.style.left = "200px"
+                graph.style.width = "80vw"
+                graph.style.left = "200px"
+            })
+            window.addEventListener("scroll",(e)=>{
+                
+            if(this.scrollY > 320 ){
+                document.querySelectorAll(".draw div").forEach(element => {
+                   element.style.transform = "scaleY(1)"
+                });
+            }
+            if(this.scrollY > 500 ){
+                document.querySelector("#side").style.position = "relative"
+                document.querySelector("#side").style.top = "635px"
+            }else{
+                document.querySelector("#side").style.position = "fixed"
+                document.querySelector("#side").style.top = "100px"
+            }
+        })
+
+</script>
+</body>
+</html>
